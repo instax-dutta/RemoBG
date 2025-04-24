@@ -1,0 +1,15 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0" y1="0" x2="256" y2="256" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#ec4899"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="#181B2A"/>
+  <g filter="url(#shadow)">
+    <path d="M64 192L192 64" stroke="url(#bg-gradient)" stroke-width="24" stroke-linecap="round"/>
+    <circle cx="192" cy="64" r="20" fill="url(#bg-gradient)"/>
+    <rect x="108" y="108" width="40" height="40" rx="10" fill="#fff" fill-opacity="0.15"/>
+  </g>
+  <text x="50%" y="80%" text-anchor="middle" fill="url(#bg-gradient)" font-size="60" font-family="'Inter',sans-serif" font-weight="bold" dy=".3em">BG</text>
+</svg>
