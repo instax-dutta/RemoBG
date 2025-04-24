@@ -328,17 +328,18 @@
                 if (colorInput && colorInput.value) {
                     color = colorInput.value;
                 }
+                // If running on Vercel or similar, call the local API route instead of the remote RMBG API
+                // processImage(file, backgroundFile, color, '/api/remove-bg');
                 processImage(file, backgroundFile, color);
             };
             reader.readAsDataURL(file);
         }
         
-        // Process image with API
-        async function processImage(file, backgroundFile = null, color = null) {
+        // Update processImage to support local proxy endpoint
+        async function processImage(file, backgroundFile = null, color = null, endpoint = null) {
             loadingContainer.classList.remove('hidden');
             resultContainer.classList.remove('show');
             
-            // Simulate progress (in a real app, you'd use actual upload progress)
             let progress = 0;
             const progressInterval = setInterval(() => {
                 progress += Math.random() * 10;
@@ -348,16 +349,17 @@
             
             try {
                 const formData = new FormData();
-                formData.append('image', file); // Correct field name
+                formData.append('image', file);
                 if (backgroundFile) {
                     formData.append('background', backgroundFile);
                 }
                 if (color) {
                     formData.append('color', color);
                 }
-
-                // Using the rmbg.sdad.pro API (correct endpoint)
-                const response = await fetch('https://rmbg.sdad.pro/remove-bg', {
+                
+                // Use proxy endpoint if provided, otherwise RMBG API
+                const url = endpoint || '/api/remove-bg';
+                const response = await fetch(url, {
                     method: 'POST',
                     body: formData
                 });

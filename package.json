@@ -1,0 +1,11 @@
+{
+  "name": "remobg-proxy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "formidable": "^3.5.0",
+    "form-data": "^4.0.0",
+    "node-fetch": "^2.6.7"
+  }
+}
